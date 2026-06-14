@@ -1,0 +1,40 @@
+---
+import type { Lang } from '../i18n';
+import { getDict } from '../i18n';
+const { lang } = Astro.props as { lang: Lang };
+const t = getDict(lang);
+---
+<section class="rounded-2xl border p-5" style="border-color: var(--border-neutral); background: var(--color-surface)">
+  <h2 class="text-sm font-semibold text-[var(--color-muted)] mb-3">{t.sections.nowPlaying}</h2>
+  <div id="np" class="flex items-center gap-3">
+    <div id="np-art" class="size-12 rounded-md bg-[var(--color-surface-2)] shrink-0"></div>
+    <div class="min-w-0">
+      <p id="np-title" class="text-sm font-medium truncate">{t.nowPlaying.idle}</p>
+      <p id="np-artist" class="text-xs text-[var(--color-muted)] truncate"></p>
+    </div>
+  </div>
+</section>
+<script is:inline define:vars={{ idle: t.nowPlaying.idle, recently: t.nowPlaying.recently }}>
+  async function load() {
+    try {
+      const r = await fetch('/api/now-playing');
+      const d = await r.json();
+      const art = document.getElementById('np-art');
+      const title = document.getElementById('np-title');
+      const artist = document.getElementById('np-artist');
+      if (d && d.title) {
+        title.textContent = d.title;
+        artist.textContent = (d.isPlaying ? '' : recently + ' · ') + (d.artist || '');
+        if (d.albumArt) {
+          art.style.backgroundImage = `url(${d.albumArt})`;
+          art.style.backgroundSize = 'cover';
+        }
+      } else {
+        title.textContent = idle;
+        artist.textContent = '';
+      }
+    } catch (_) { /* fail-soft */ }
+  }
+  load();
+  setInterval(load, 30000);
+</script>
