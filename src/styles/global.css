@@ -153,18 +153,30 @@ body {
 .arrow { font-size: 17px; line-height: 1; opacity: .85; transition: transform .25s ease; }
 .proj:hover .arrow { transform: translateX(4px); }
 
-.rabbit { grid-area: rabbit; position: relative; overflow: hidden; }
-.rabbit .mark, .rabbit h3, .rabbit p, .rabbit .proj-foot { position: relative; z-index: 1; }
-.rabbit .deco {
-  position: absolute; z-index: 0; top: -52%; left: 50%; right: auto;
+.rabbit { grid-area: rabbit; }
+.tupc   { grid-area: tupc; }
+.brium  { grid-area: brium; }
+
+/* 3D layered backdrop (per shape, per card) */
+.proj { position: relative; overflow: hidden; }
+.proj .mark, .proj h3, .proj p, .proj .proj-foot { position: relative; z-index: 1; }
+.proj .deco {
+  position: absolute; z-index: 0; left: 50%; right: auto;
   transform: translateX(-50%);
-  width: 250%; height: auto; color: #15110e; opacity: .15;
-  pointer-events: none;
+  height: auto; color: #15110e; opacity: .15; pointer-events: none;
+}
+/* tall card */
+.rabbit .deco {
+  top: -52%; width: 250%;
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 70%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 70%);
 }
-.tupc   { grid-area: tupc; }
-.brium  { grid-area: brium; }
+/* short cards */
+.tupc .deco, .brium .deco {
+  top: -34%; width: 116%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 64%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 64%);
+}
 
 /* info cards */
 .now   { grid-area: now; }
