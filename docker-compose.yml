@@ -1,13 +1,21 @@
 services:
   chrispiz:
     build: .
+    container_name: chrispiz
     restart: unless-stopped
-    ports:
-      - "127.0.0.1:4321:4321"
+    expose:
+      - "4321"
+    networks:
+      - caddy
     secrets:
       - spotify_client_id
       - spotify_client_secret
       - spotify_refresh_token
+
+networks:
+  caddy:
+    external: true
+    name: n8n-docker-caddy_default
 
 secrets:
   spotify_client_id:
