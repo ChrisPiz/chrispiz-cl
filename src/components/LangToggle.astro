@@ -9,7 +9,11 @@ const href = other === 'es' ? '/es' : '/';
   style="border-color: var(--border-neutral)">{other}</a>
 <script is:inline>
   document.getElementById('lang-toggle')?.addEventListener('click', (e) => {
-    const lang = e.currentTarget.getAttribute('data-lang');
+    e.preventDefault();
+    const el = e.currentTarget;
+    const lang = el.getAttribute('data-lang');
+    const href = el.getAttribute('href');
     document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+    window.location.href = href;
   });
 </script>
