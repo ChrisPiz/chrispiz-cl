@@ -14,7 +14,11 @@ const t = getDict(lang);
   </div>
   <div class="np">
     <div class="cover" id="np-cover"></div>
-    <span id="np-text">{t.npIdle}</span>
+    <div class="np-meta">
+      <span class="np-status" id="np-status"></span>
+      <span class="np-title" id="np-title">{t.npIdle}</span>
+      <span class="np-artist" id="np-artist"></span>
+    </div>
   </div>
 </a>
 <script is:inline define:vars={{ idle: t.npIdle, recently: t.npRecently }}>
@@ -24,17 +28,24 @@ const t = getDict(lang);
       const d = await r.json();
       const card = document.getElementById('np-card');
       const cover = document.getElementById('np-cover');
-      const text = document.getElementById('np-text');
+      const status = document.getElementById('np-status');
+      const title = document.getElementById('np-title');
+      const artist = document.getElementById('np-artist');
       const eq = document.getElementById('np-eq');
       if (d && d.title) {
-        const who = d.artist ? ' · ' + d.artist : '';
-        text.textContent = (d.isPlaying ? '' : recently + ' · ') + d.title + who;
+        status.textContent = d.isPlaying ? '' : recently;
+        status.style.display = d.isPlaying ? 'none' : 'block';
+        title.textContent = d.title;
+        artist.textContent = d.artist || '';
+        artist.style.display = d.artist ? 'block' : 'none';
         if (d.albumArt && cover) cover.style.backgroundImage = `url(${d.albumArt})`;
         if (d.url && card) { card.href = d.url; card.target = '_blank'; card.classList.add('has-link'); }
         else if (card) { card.removeAttribute('href'); card.classList.remove('has-link'); }
         if (eq) eq.classList.toggle('playing', !!d.isPlaying);
       } else {
-        text.textContent = idle;
+        status.style.display = 'none';
+        title.textContent = idle;
+        artist.style.display = 'none';
         if (cover) cover.style.backgroundImage = '';
         if (card) { card.removeAttribute('href'); card.classList.remove('has-link'); }
         if (eq) eq.classList.remove('playing');
