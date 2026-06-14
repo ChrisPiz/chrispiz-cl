@@ -5,6 +5,11 @@ const { lang } = Astro.props as { lang: Lang };
 const t = getDict(lang);
 ---
 <div class="card info stack loc">
+  <svg class="map" viewBox="0 0 120 170" fill="none" aria-hidden="true">
+    <path class="land" d="M55 12C70 8 95 18 92 35C100 55 95 80 78 95C72 110 62 130 52 158L48 160C44 140 40 120 38 100C33 80 28 60 32 40C36 22 42 12 55 12Z"/>
+    <circle class="ring" cx="41" cy="118" r="9"/>
+    <circle class="pin" cx="41" cy="118" r="3.4"/>
+  </svg>
   <div class="pill-label">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
     <span>{t.locLabel}</span>
