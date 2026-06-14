@@ -157,32 +157,6 @@ body {
 .tupc   { grid-area: tupc; }
 .brium  { grid-area: brium; }
 
-/* 3D layered backdrop (per shape, per card) */
-.proj { position: relative; overflow: hidden; }
-.proj .mark, .proj h3, .proj p, .proj .proj-foot { position: relative; z-index: 1; }
-.proj .deco {
-  position: absolute; z-index: 0; left: 50%; right: auto;
-  transform: translateX(-50%);
-  height: auto; color: #15110e; opacity: .16; pointer-events: none;
-}
-/* tall card */
-.rabbit .deco {
-  top: -30%; width: 168%; stroke-width: .42;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 70%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 70%);
-}
-/* brium — circular stacked dome */
-.brium .deco {
-  top: -22%; width: 124%; stroke-width: .62;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 66%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 66%);
-}
-/* tupc — isometric 3D cube */
-.tupc .deco {
-  top: 2%; left: auto; right: -6%; transform: none;
-  width: 58%; stroke-width: 1.4; opacity: .17;
-}
-
 /* info cards */
 .now   { grid-area: now; }
 .avail { grid-area: avail; }
