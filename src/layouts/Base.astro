@@ -1,0 +1,30 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+import '../styles/global.css';
+import type { Lang } from '../i18n';
+
+interface Props { lang: Lang; title?: string }
+const { lang, title = 'Cristóbal — designer, entrepreneur & product builder' } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content="Cristóbal — designer, entrepreneur and product builder across applied AI, digital tools and 3D fabrication." />
+    <link rel="alternate" hreflang="en" href="https://chrispiz.cl/" />
+    <link rel="alternate" hreflang="es" href="https://chrispiz.cl/es" />
+    <script is:inline>
+      (() => {
+        const s = localStorage.getItem('theme');
+        const d = s ? s === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (d) document.documentElement.classList.add('dark');
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen">
+    <slot />
+  </body>
+</html>
