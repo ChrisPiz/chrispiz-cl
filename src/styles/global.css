@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Dark mode via JS class toggle (NOT media query) — Tailwind v4 requirement */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* project block colors (muted) */
+  --color-rabbithole: #E8845C;
+  --color-tupcfacil: #7FA8D9;
+  --color-brium: #EBC84A;
+}
+
+:root {
+  --color-cream: #F4F1EC;
+  --color-ink: #1A1A1A;
+  --color-muted: #6B6B6B;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #EEEAE3;
+  --border-neutral: rgba(128,128,128,0.12);
+}
+
+.dark {
+  --color-cream: #0E0E0E;
+  --color-ink: #F4F1EC;
+  --color-muted: #9A9A9A;
+  --color-surface: #161616;
+  --color-surface-2: #1A1A1A;
+  --border-neutral: rgba(128,128,128,0.18);
+}
+
+html { background: var(--color-cream); color: var(--color-ink); }
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* { transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
