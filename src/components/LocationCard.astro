@@ -8,17 +8,25 @@ const t = getDict(lang);
   <div class="map">
     <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
       <g class="streets" transform="rotate(-12 100 100)">
-        <!-- streets grid -->
-        <line class="road" x1="30" y1="-20" x2="30" y2="220"/>
-        <line class="road" x1="66" y1="-20" x2="66" y2="220"/>
-        <line class="road" x1="134" y1="-20" x2="134" y2="220"/>
-        <line class="road" x1="170" y1="-20" x2="170" y2="220"/>
-        <line class="road" x1="-20" y1="34" x2="220" y2="34"/>
-        <line class="road" x1="-20" y1="74" x2="220" y2="74"/>
-        <line class="road" x1="-20" y1="146" x2="220" y2="146"/>
-        <line class="road" x1="-20" y1="184" x2="220" y2="184"/>
+        <!-- vertical streets -->
+        <line class="road" x1="20" y1="-30" x2="20" y2="230"/>
+        <line class="road" x1="50" y1="-30" x2="50" y2="230"/>
+        <line class="road" x1="80" y1="-30" x2="80" y2="230"/>
+        <line class="road" x1="110" y1="-30" x2="110" y2="230"/>
+        <line class="road" x1="140" y1="-30" x2="140" y2="230"/>
+        <line class="road" x1="170" y1="-30" x2="170" y2="230"/>
+        <line class="road" x1="200" y1="-30" x2="200" y2="230"/>
+        <!-- horizontal streets -->
+        <line class="road" x1="-30" y1="22" x2="230" y2="22"/>
+        <line class="road" x1="-30" y1="52" x2="230" y2="52"/>
+        <line class="road" x1="-30" y1="86" x2="230" y2="86"/>
+        <line class="road" x1="-30" y1="120" x2="230" y2="120"/>
+        <line class="road" x1="-30" y1="152" x2="230" y2="152"/>
+        <line class="road" x1="-30" y1="186" x2="230" y2="186"/>
         <!-- main avenue (Alameda) -->
-        <line class="avenue" x1="-30" y1="215" x2="230" y2="-15"/>
+        <line class="avenue" x1="-40" y1="240" x2="240" y2="-40"/>
+        <!-- secondary diagonal -->
+        <line class="road" x1="240" y1="200" x2="-20" y2="-40"/>
         <!-- río Mapocho -->
         <path class="river" d="M-10 96 C 40 78 78 116 120 96 C 158 78 192 108 212 90"/>
       </g>
