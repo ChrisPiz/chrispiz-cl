@@ -163,19 +163,19 @@ body {
 .proj .deco {
   position: absolute; z-index: 0; left: 50%; right: auto;
   transform: translateX(-50%);
-  height: auto; color: #15110e; opacity: .15; pointer-events: none;
+  height: auto; color: #15110e; opacity: .16; pointer-events: none;
 }
 /* tall card */
 .rabbit .deco {
-  top: -52%; width: 250%;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 70%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 70%);
+  top: -30%; width: 168%; stroke-width: .42;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 70%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 70%);
 }
 /* short cards */
 .tupc .deco, .brium .deco {
-  top: -34%; width: 116%;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 64%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 64%);
+  top: -22%; width: 124%; stroke-width: .62;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 66%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 66%);
 }
 
 /* info cards */
