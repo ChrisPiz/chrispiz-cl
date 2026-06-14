@@ -183,10 +183,12 @@ body {
 .loc .loc-city { display: block; font-size: clamp(18px, 1.4vw, 22px); font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
 .loc .loc-meta { display: block; font-size: 13px; color: var(--text-2); margin-top: 6px; }
 
-.loc .map { position: absolute; z-index: 0; top: 50%; right: clamp(10px, 2.5vw, 34px); height: 150%; aspect-ratio: 300 / 420; transform: translateY(-50%); pointer-events: none; }
+.loc .map { position: absolute; z-index: 0; top: 50%; right: clamp(-10px, 1vw, 10px); height: 175%; aspect-ratio: 1 / 1; transform: translateY(-50%); pointer-events: none; overflow: hidden; }
 .loc .map svg { height: 100%; width: 100%; display: block; }
-.loc .map .chile-shape { fill: var(--text-3); fill-opacity: .32; }
-.loc .map .loc-pin { position: absolute; left: 50%; top: 47%; width: 9px; height: 9px; border-radius: 50%; background: var(--green); transform: translate(-50%, -50%); }
+.loc .map .streets .road { stroke: var(--text-3); stroke-width: 1.4; stroke-opacity: .26; }
+.loc .map .streets .avenue { stroke: var(--text-3); stroke-width: 2.6; stroke-opacity: .4; }
+.loc .map .streets .river { stroke: var(--text-3); stroke-width: 2.2; stroke-opacity: .2; fill: none; }
+.loc .map .loc-pin { position: absolute; left: 50%; top: 48%; width: 9px; height: 9px; border-radius: 50%; background: var(--green); transform: translate(-50%, -50%); }
 .loc .map .loc-pin::after {
   content: ""; position: absolute; inset: -5px; border-radius: 50%;
   border: 1.5px solid var(--green); transform-origin: center;
