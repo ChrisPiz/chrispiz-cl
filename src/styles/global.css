@@ -233,8 +233,10 @@ html[data-theme="dark"] .loc .map .map-dark { display: block; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 920px) {
-  .shell { min-height: auto; }
+  .shell { min-height: 100vh; justify-content: flex-start; }
   .bento {
+    flex: 0 0 auto;
+    max-height: none;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: none;
     grid-auto-rows: minmax(150px, auto);

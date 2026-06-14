@@ -3,7 +3,36 @@ import '../styles/global.css';
 import type { Lang } from '../i18n';
 
 interface Props { lang: Lang; title?: string }
-const { lang, title = 'Cristóbal — designer, entrepreneur & product builder' } = Astro.props;
+const { lang } = Astro.props;
+
+const site = 'https://chrispiz.cl';
+const pageUrl = lang === 'en' ? `${site}/en` : `${site}/es`;
+const ogLocale = lang === 'en' ? 'en_US' : 'es_CL';
+const ogImage = `${site}/og-image.jpg`;
+
+const title = Astro.props.title ?? (lang === 'en'
+  ? 'Cristóbal Pizarro — designer, entrepreneur & product builder'
+  : 'Cristóbal Pizarro — diseñador, emprendedor & product builder');
+
+const description = lang === 'en'
+  ? 'Cristóbal Pizarro — designer, entrepreneur and product builder working across applied AI, digital tools and 3D fabrication.'
+  : 'Cristóbal Pizarro — diseñador, emprendedor y product builder en IA aplicada, herramientas digitales y fabricación 3D.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Cristóbal Pizarro',
+  url: site,
+  image: ogImage,
+  jobTitle: 'Designer, entrepreneur & product builder',
+  sameAs: [
+    'https://github.com/ChrisPiz',
+    'https://www.linkedin.com/in/cristobalpizarro/',
+    'https://x.com/Chris_piza',
+    'https://www.instagram.com/chrispiz_/',
+  ],
+  address: { '@type': 'PostalAddress', addressLocality: 'Santiago', addressCountry: 'CL' },
+};
 ---
 <!doctype html>
 <html lang={lang} data-theme="dark">
@@ -11,12 +40,40 @@ const { lang, title = 'Cristóbal — designer, entrepreneur & product builder' 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="data:," />
+
     <title>{title}</title>
-    <meta name="description" content="Cristóbal — designer, entrepreneur and product builder across applied AI, digital tools and 3D fabrication." />
-    <link rel="alternate" hreflang="es" href="https://chrispiz.cl/es" />
-    <link rel="alternate" hreflang="en" href="https://chrispiz.cl/en" />
-    <link rel="alternate" hreflang="x-default" href="https://chrispiz.cl/" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+
+    <!-- favicon (avatar) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- i18n -->
+    <link rel="alternate" hreflang="es" href={`${site}/es`} />
+    <link rel="alternate" hreflang="en" href={`${site}/en`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cristóbal Pizarro" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:creator" content="@Chris_piza" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <script is:inline>
       (() => {
         const saved = localStorage.getItem('cb-theme');
