@@ -156,7 +156,7 @@ body {
 .rabbit { grid-area: rabbit; position: relative; overflow: hidden; }
 .rabbit .mark, .rabbit h3, .rabbit p, .rabbit .proj-foot { position: relative; z-index: 1; }
 .rabbit .deco {
-  position: absolute; z-index: 0; top: -26%; left: 50%; right: auto;
+  position: absolute; z-index: 0; top: -46%; left: 50%; right: auto;
   transform: translateX(-50%);
   width: 250%; height: auto; color: #15110e; opacity: .15;
   pointer-events: none;
