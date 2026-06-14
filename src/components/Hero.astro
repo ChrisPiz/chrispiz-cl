@@ -1,8 +1,6 @@
 ---
 import type { Lang } from '../i18n';
 import { getDict } from '../i18n';
-import ThemeToggle from './ThemeToggle.astro';
-import LangToggle from './LangToggle.astro';
 const { lang } = Astro.props as { lang: Lang };
 const t = getDict(lang);
 const links = [
@@ -13,26 +11,20 @@ const links = [
   { label: 'Email', href: 'mailto:hola@chrispiz.cl' },
 ];
 ---
-<header class="flex flex-col gap-6">
-  <div class="flex items-start justify-between gap-4">
-    <img src="/avatar.jpg" alt="Cristóbal" width="84" height="84"
-      class="rounded-2xl object-cover" style="width:84px;height:84px" />
-    <div class="flex items-center gap-2">
-      <LangToggle lang={lang} />
-      <ThemeToggle />
-    </div>
+<div class="card info intro">
+  <div class="avatar"><img src="/avatar.png" alt="Cristóbal" /></div>
+  <h1 class="hero">{t.hero} <span class="muted">{t.heroMuted}</span></h1>
+  <p class="sub">{t.sub}</p>
+  <div class="foot-row">
+    <span class="pill"><span class="dot"></span>{t.available}</span>
+    <nav class="social">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          target={l.href.startsWith('http') ? '_blank' : undefined}
+          rel={l.href.startsWith('http') ? 'noopener' : undefined}
+        >{l.label}</a>
+      ))}
+    </nav>
   </div>
-
-  <p class="max-w-3xl text-2xl sm:text-3xl font-semibold leading-snug">{t.bio}</p>
-
-  <div class="flex items-center gap-2 text-sm text-[var(--color-muted)]">
-    <span class="inline-block size-2 rounded-full bg-green-500"></span>
-    {t.available.badge}
-  </div>
-
-  <nav class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--color-muted)]">
-    {links.map((l) => (
-      <a href={l.href} class="hover:text-[var(--color-ink)]">{l.label}</a>
-    ))}
-  </nav>
-</header>
+</div>

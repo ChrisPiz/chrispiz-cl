@@ -3,10 +3,11 @@ export type Mark = 'triangle' | 'square' | 'circle';
 export interface Project {
   name: string;
   url: string;
-  /** copy keyed by lang */
   blurb: { en: string; es: string };
-  /** css var token name without -- prefix */
-  color: 'rabbithole' | 'tupcfacil' | 'brium';
+  /** color class on .proj — o=orange, b=blue, y=yellow */
+  cls: 'o' | 'b' | 'y';
+  /** css grid-area */
+  area: 'rabbit' | 'tupc' | 'brium';
   mark: Mark;
 }
 
@@ -18,7 +19,8 @@ export const projects: Project[] = [
       en: '3D printing, prototyping & custom digital fabrication.',
       es: 'Impresión 3D, prototipado y fabricación digital a medida.',
     },
-    color: 'rabbithole',
+    cls: 'o',
+    area: 'rabbit',
     mark: 'triangle',
   },
   {
@@ -26,9 +28,10 @@ export const projects: Project[] = [
     url: 'https://tupcfacil.com',
     blurb: {
       en: 'AI tool to build compatible PCs in Chile by use & budget.',
-      es: 'Herramienta con IA para armar PCs compatibles en Chile según uso y presupuesto.',
+      es: 'Herramienta de IA para armar PCs compatibles en Chile según uso y presupuesto.',
     },
-    color: 'tupcfacil',
+    cls: 'b',
+    area: 'tupc',
     mark: 'square',
   },
   {
@@ -38,7 +41,8 @@ export const projects: Project[] = [
       en: 'Personal studio: web, AI, automation & digital products.',
       es: 'Estudio personal: web, IA, automatización y productos digitales.',
     },
-    color: 'brium',
+    cls: 'y',
+    area: 'brium',
     mark: 'circle',
   },
 ];

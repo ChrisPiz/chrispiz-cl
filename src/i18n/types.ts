@@ -1,8 +1,26 @@
 export type Lang = 'en' | 'es';
 
 export interface Dict {
-  bio: string;
-  available: { badge: string; body: string; cta: string };
-  sections: { projects: string; nowPlaying: string; stack: string };
-  nowPlaying: { idle: string; recently: string };
+  /** hero — white (primary) clause */
+  hero: string;
+  /** hero — muted (secondary) clause */
+  heroMuted: string;
+  /** intro subtitle */
+  sub: string;
+  /** availability pill */
+  available: string;
+  /** contact card pill-label */
+  contactLabel: string;
+  /** contact card body */
+  contactBody: string;
+  /** contact "let's talk" lead-in */
+  talk: string;
+  /** now-playing pill-label */
+  npLabel: string;
+  /** now-playing idle text */
+  npIdle: string;
+  /** now-playing "recently played" prefix */
+  npRecently: string;
+  /** stack pill-label */
+  stackLabel: string;
 }

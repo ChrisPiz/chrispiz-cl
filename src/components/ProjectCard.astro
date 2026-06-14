@@ -2,20 +2,15 @@
 import type { Project } from '../data/projects';
 import type { Lang } from '../i18n';
 const { project, lang } = Astro.props as { project: Project; lang: Lang };
-const bg = `var(--color-${project.color})`;
 const marks: Record<string, string> = {
-  triangle: '<polygon points="12,4 20,18 4,18" />',
-  square: '<rect x="5" y="5" width="14" height="14" />',
-  circle: '<circle cx="12" cy="12" r="7" />',
+  triangle: '<path d="M12 4l8 14H4z" fill="currentColor"/>',
+  square: '<rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/>',
+  circle: '<circle cx="12" cy="12" r="8" fill="currentColor"/>',
 };
 ---
-<a href={project.url} target="_blank" rel="noopener"
-  class="group flex flex-col justify-between rounded-2xl p-5 min-h-44 text-[#1A1A1A] transition-transform hover:-translate-y-0.5"
-  style={`background:${bg}`}>
-  <svg viewBox="0 0 24 24" class="size-7 fill-current opacity-90" set:html={marks[project.mark]} />
-  <div>
-    <h3 class="text-lg font-semibold">{project.name}</h3>
-    <p class="text-sm opacity-80">{project.blurb[lang]}</p>
-    <span class="mt-2 inline-block text-sm opacity-70 group-hover:opacity-100">→</span>
-  </div>
+<a class={`card proj ${project.cls} ${project.area}`} href={project.url} target="_blank" rel="noopener">
+  <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" set:html={marks[project.mark]} />
+  <h3>{project.name}</h3>
+  <p>{project.blurb[lang]}</p>
+  <span class="arrow">→</span>
 </a>

@@ -1,6 +1,4 @@
 ---
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/600.css';
 import '../styles/global.css';
 import type { Lang } from '../i18n';
 
@@ -8,11 +6,12 @@ interface Props { lang: Lang; title?: string }
 const { lang, title = 'Cristóbal — designer, entrepreneur & product builder' } = Astro.props;
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
     <title>{title}</title>
     <meta name="description" content="Cristóbal — designer, entrepreneur and product builder across applied AI, digital tools and 3D fabrication." />
     <link rel="alternate" hreflang="en" href="https://chrispiz.cl/" />
@@ -20,13 +19,15 @@ const { lang, title = 'Cristóbal — designer, entrepreneur & product builder' 
     <link rel="alternate" hreflang="x-default" href="https://chrispiz.cl/" />
     <script is:inline>
       (() => {
-        const s = localStorage.getItem('theme');
-        const d = s ? s === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-        if (d) document.documentElement.classList.add('dark');
+        const saved = localStorage.getItem('cb-theme');
+        const theme = saved
+          ? saved
+          : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
   </head>
-  <body class="min-h-screen">
+  <body>
     <slot />
   </body>
 </html>

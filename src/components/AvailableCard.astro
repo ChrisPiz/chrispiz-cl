@@ -4,11 +4,11 @@ import { getDict } from '../i18n';
 const { lang } = Astro.props as { lang: Lang };
 const t = getDict(lang);
 ---
-<section class="rounded-2xl border p-5 flex flex-col gap-3" style="border-color: var(--border-neutral); background: var(--color-surface)">
-  <div class="flex items-center gap-2 text-sm">
-    <span class="inline-block size-2 rounded-full bg-green-500"></span>
-    <span class="font-semibold">{t.available.badge}</span>
+<div class="card info avail">
+  <div class="pill-label">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>{t.contactLabel}</span>
   </div>
-  <p class="text-sm text-[var(--color-muted)]">{t.available.body}</p>
-  <a href="mailto:hola@chrispiz.cl" class="text-sm font-semibold hover:underline">{t.available.cta} → hola@chrispiz.cl</a>
-</section>
+  <p>{t.contactBody}</p>
+  <div class="talk">{t.talk} → <a href="mailto:hola@chrispiz.cl">hola@chrispiz.cl</a></div>
+</div>
