@@ -253,6 +253,6 @@ html[data-theme="dark"] .loc .map .map-dark { display: block; }
   .bento {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "intro" "rabbit" "now" "avail" "tupc" "brium" "stack";
+      "intro" "rabbit" "tupc" "brium" "now" "avail" "stack";
   }
 }
