@@ -171,11 +171,16 @@ body {
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 70%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 70%);
 }
-/* short cards */
-.tupc .deco, .brium .deco {
+/* brium — circular stacked dome */
+.brium .deco {
   top: -22%; width: 124%; stroke-width: .62;
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 66%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 66%);
+}
+/* tupc — isometric 3D cube */
+.tupc .deco {
+  top: 2%; left: auto; right: -6%; transform: none;
+  width: 58%; stroke-width: 1.4; opacity: .17;
 }
 
 /* info cards */
