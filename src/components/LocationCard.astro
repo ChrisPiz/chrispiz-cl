@@ -5,10 +5,19 @@ const { lang } = Astro.props as { lang: Lang };
 const t = getDict(lang);
 ---
 <div class="card info stack loc">
-  <svg class="map" viewBox="0 0 120 170" fill="none" aria-hidden="true">
-    <path class="land" d="M58 10C72 8 84 10 86 20C100 30 99 48 96 58C93 78 84 92 76 104C70 120 60 140 53 162L50 163C45 142 41 120 39 100C36 78 31 60 34 44C37 26 44 12 58 10Z"/>
-    <circle class="ring" cx="42" cy="120" r="9"/>
-    <circle class="pin" cx="42" cy="120" r="3.6"/>
+  <svg class="map" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+    <defs><clipPath id="globe"><circle cx="60" cy="60" r="54"/></clipPath></defs>
+    <circle class="globe-edge" cx="60" cy="60" r="54"/>
+    <g class="grid" clip-path="url(#globe)">
+      <line x1="60" y1="6" x2="60" y2="114"/>
+      <ellipse cx="60" cy="60" rx="20" ry="54"/>
+      <ellipse cx="60" cy="60" rx="40" ry="54"/>
+      <line x1="6" y1="60" x2="114" y2="60"/>
+      <line x1="11" y1="38" x2="109" y2="38"/>
+      <line x1="11" y1="82" x2="109" y2="82"/>
+    </g>
+    <circle class="ring" cx="48" cy="78" r="9"/>
+    <circle class="pin" cx="48" cy="78" r="3.6"/>
   </svg>
   <div class="pill-label">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
