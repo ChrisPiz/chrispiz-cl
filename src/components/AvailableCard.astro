@@ -1,0 +1,14 @@
+---
+import type { Lang } from '../i18n';
+import { getDict } from '../i18n';
+const { lang } = Astro.props as { lang: Lang };
+const t = getDict(lang);
+---
+<section class="rounded-2xl border p-5 flex flex-col gap-3" style="border-color: var(--border-neutral); background: var(--color-surface)">
+  <div class="flex items-center gap-2 text-sm">
+    <span class="inline-block size-2 rounded-full bg-green-500"></span>
+    <span class="font-semibold">{t.available.badge}</span>
+  </div>
+  <p class="text-sm text-[var(--color-muted)]">{t.available.body}</p>
+  <a href="mailto:hola@chrispiz.cl" class="text-sm font-semibold hover:underline">{t.available.cta} → hola@chrispiz.cl</a>
+</section>
