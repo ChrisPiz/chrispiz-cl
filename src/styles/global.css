@@ -60,6 +60,7 @@ body {
   padding: clamp(16px, 2.4vh, 28px) clamp(18px, 3.4vw, 48px);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: clamp(14px, 2vh, 22px);
 }
 
@@ -81,6 +82,7 @@ body {
 /* ---------- bento ---------- */
 .bento {
   flex: 1;
+  max-height: clamp(520px, 78vh, 680px);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, minmax(0, 1fr));
