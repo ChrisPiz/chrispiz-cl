@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { parseNowPlaying, getNowPlaying } from '../src/lib/spotify';
+import { parseNowPlaying, getNowPlaying, __resetTokenCache } from '../src/lib/spotify';
 
 describe('parseNowPlaying', () => {
   it('maps a currently-playing payload', () => {
@@ -29,7 +29,10 @@ describe('parseNowPlaying', () => {
 describe('getNowPlaying', () => {
   const creds = { clientId: 'id', clientSecret: 'sec', refreshToken: 'ref' };
 
-  beforeEach(() => vi.restoreAllMocks());
+  beforeEach(() => {
+    __resetTokenCache();
+    vi.restoreAllMocks();
+  });
 
   it('refreshes token then fetches current track', async () => {
     const fetchMock = vi.fn()
@@ -50,5 +53,13 @@ describe('getNowPlaying', () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 400, json: async () => ({}) }));
     const res = await getNowPlaying(creds);
     expect(res).toEqual({ isPlaying: false });
+  });
+
+  it('fail-soft hits token endpoint exactly once when refresh fails', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: false, status: 400, json: async () => ({}) });
+    vi.stubGlobal('fetch', fetchMock);
+    const res = await getNowPlaying(creds);
+    expect(res).toEqual({ isPlaying: false });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 });

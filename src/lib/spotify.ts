@@ -18,6 +18,11 @@ const RECENT_URL = 'https://api.spotify.com/v1/me/player/recently-played?limit=1
 
 let cachedToken: { value: string; expiresAt: number } | null = null;
 
+/** test-only: reset the in-memory token cache */
+export function __resetTokenCache() {
+  cachedToken = null;
+}
+
 export function parseNowPlaying(payload: any, fromRecent: boolean): NowPlaying {
   const item = fromRecent ? payload?.items?.[0]?.track : payload?.item;
   if (!item) return { isPlaying: false };
