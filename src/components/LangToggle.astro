@@ -2,7 +2,7 @@
 import type { Lang } from '../i18n';
 const { lang } = Astro.props as { lang: Lang };
 const other: Lang = lang === 'en' ? 'es' : 'en';
-const href = other === 'es' ? '/es' : '/';
+const href = other === 'es' ? '/' : '/en';
 ---
 <a class="ctl ctl--lang" id="lang" href={href} data-lang={other} aria-label="Change language">{other.toUpperCase()}</a>
 <script is:inline>

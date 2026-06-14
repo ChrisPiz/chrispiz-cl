@@ -1,5 +1,5 @@
 ---
-// server-rendered so the i18n middleware (Accept-Language / cookie redirect) runs at runtime
+// Spanish default — server-rendered so the i18n middleware (cookie redirect to /en) runs at runtime
 export const prerender = false;
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
@@ -11,7 +11,7 @@ import LangToggle from '../components/LangToggle.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import { projects } from '../data/projects';
 
-const lang = 'en';
+const lang = 'es';
 const [rabbit, tupc, brium] = projects;
 ---
 <Base lang={lang}>
