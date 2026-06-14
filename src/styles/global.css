@@ -153,7 +153,13 @@ body {
 .arrow { font-size: 17px; line-height: 1; opacity: .85; transition: transform .25s ease; }
 .proj:hover .arrow { transform: translateX(4px); }
 
-.rabbit { grid-area: rabbit; }
+.rabbit { grid-area: rabbit; position: relative; overflow: hidden; }
+.rabbit .mark, .rabbit h3, .rabbit p, .rabbit .proj-foot { position: relative; z-index: 1; }
+.rabbit .deco {
+  position: absolute; z-index: 0; top: 11%; right: -8%;
+  width: 74%; height: auto; color: #15110e; opacity: .14;
+  pointer-events: none;
+}
 .tupc   { grid-area: tupc; }
 .brium  { grid-area: brium; }
 
