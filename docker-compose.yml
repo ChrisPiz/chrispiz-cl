@@ -1,0 +1,18 @@
+services:
+  chrispiz:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4321:4321"
+    secrets:
+      - spotify_client_id
+      - spotify_client_secret
+      - spotify_refresh_token
+
+secrets:
+  spotify_client_id:
+    file: ./secrets/spotify_client_id
+  spotify_client_secret:
+    file: ./secrets/spotify_client_secret
+  spotify_refresh_token:
+    file: ./secrets/spotify_refresh_token
