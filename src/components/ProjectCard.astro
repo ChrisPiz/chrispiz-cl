@@ -7,10 +7,14 @@ const marks: Record<string, string> = {
   square: '<rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/>',
   circle: '<circle cx="12" cy="12" r="8" fill="currentColor"/>',
 };
+const host = new URL(project.url).host.replace(/^www\./, '');
 ---
 <a class={`card proj ${project.cls} ${project.area}`} href={project.url} target="_blank" rel="noopener">
   <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" set:html={marks[project.mark]} />
   <h3>{project.name}</h3>
   <p>{project.blurb[lang]}</p>
-  <span class="arrow">→</span>
+  <div class="proj-foot">
+    <span class="host">{host}</span>
+    <span class="arrow">→</span>
+  </div>
 </a>

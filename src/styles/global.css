@@ -147,7 +147,9 @@ body {
 .mark { width: 22px; height: 22px; opacity: .9; }
 .proj h3 { font-size: clamp(16px, 1.25vw, 19px); font-weight: 600; letter-spacing: -0.01em; margin-top: auto; }
 .proj p { font-size: 13px; line-height: 1.42; margin-top: 6px; color: rgba(21,17,14,.72); max-width: 28ch; }
-.arrow { margin-top: 12px; font-size: 17px; line-height: 1; opacity: .85; transition: transform .25s ease; }
+.proj-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
+.proj-foot .host { font-size: 12.5px; font-weight: 500; letter-spacing: -0.01em; color: rgba(21,17,14,.62); }
+.arrow { font-size: 17px; line-height: 1; opacity: .85; transition: transform .25s ease; }
 .proj:hover .arrow { transform: translateX(4px); }
 
 .rabbit { grid-area: rabbit; }
