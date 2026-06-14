@@ -156,10 +156,12 @@ body {
 .rabbit { grid-area: rabbit; position: relative; overflow: hidden; }
 .rabbit .mark, .rabbit h3, .rabbit p, .rabbit .proj-foot { position: relative; z-index: 1; }
 .rabbit .deco {
-  position: absolute; z-index: 0; top: -46%; left: 50%; right: auto;
+  position: absolute; z-index: 0; top: -52%; left: 50%; right: auto;
   transform: translateX(-50%);
   width: 250%; height: auto; color: #15110e; opacity: .15;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 70%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 70%);
 }
 .tupc   { grid-area: tupc; }
 .brium  { grid-area: brium; }
