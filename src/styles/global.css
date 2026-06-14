@@ -206,10 +206,10 @@ body {
 .loc .loc-meta { display: block; font-size: 13px; color: var(--text-2); margin-top: 6px; }
 
 .loc .map { position: absolute; z-index: 0; inset: 0; pointer-events: none; overflow: hidden; }
-.loc .map svg { height: 100%; width: 100%; display: block; }
-.loc .map .streets .road { stroke: var(--text-3); stroke-width: 1.4; stroke-opacity: .26; }
-.loc .map .streets .avenue { stroke: var(--text-3); stroke-width: 2.6; stroke-opacity: .4; }
-.loc .map .streets .river { stroke: var(--text-3); stroke-width: 2.2; stroke-opacity: .2; fill: none; }
+.loc .map .map-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.loc .map .map-dark { display: none; }
+html[data-theme="dark"] .loc .map .map-light { display: none; }
+html[data-theme="dark"] .loc .map .map-dark { display: block; }
 .loc .map .loc-pin { position: absolute; left: 50%; top: 48%; width: 9px; height: 9px; border-radius: 50%; background: var(--green); transform: translate(-50%, -50%); }
 .loc .map .loc-pin::after {
   content: ""; position: absolute; inset: -5px; border-radius: 50%;
