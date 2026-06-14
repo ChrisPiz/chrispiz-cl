@@ -1,37 +1,15 @@
 ---
-// Spanish default — server-rendered so the i18n middleware (cookie redirect to /en) runs at runtime
+// Language detector. Runs on the server (prerender=false), reads the visitor's
+// browser language and redirects to /en or /es. A manual choice (cookie) wins.
 export const prerender = false;
-import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import NowPlaying from '../components/NowPlaying.astro';
-import AvailableCard from '../components/AvailableCard.astro';
-import StackCard from '../components/StackCard.astro';
-import LangToggle from '../components/LangToggle.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
-import { projects } from '../data/projects';
 
-const lang = 'es';
-const [rabbit, tupc, brium] = projects;
+const cookie = Astro.cookies.get('lang')?.value;
+const accept = (Astro.request.headers.get('accept-language') ?? '').toLowerCase();
+
+let target = '/en'; // default for English & any non-Spanish browser
+if (cookie === 'es') target = '/es';
+else if (cookie === 'en') target = '/en';
+else if (accept.startsWith('es')) target = '/es';
+
+return Astro.redirect(target, 302);
 ---
-<Base lang={lang}>
-  <main class="page">
-    <div class="shell">
-      <header class="bar">
-        <div class="controls">
-          <LangToggle lang={lang} />
-          <ThemeToggle />
-        </div>
-      </header>
-      <section class="bento">
-        <Hero lang={lang} />
-        <ProjectCard project={rabbit} lang={lang} />
-        <NowPlaying lang={lang} />
-        <AvailableCard lang={lang} />
-        <ProjectCard project={tupc} lang={lang} />
-        <ProjectCard project={brium} lang={lang} />
-        <StackCard lang={lang} />
-      </section>
-    </div>
-  </main>
-</Base>

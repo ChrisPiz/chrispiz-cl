@@ -1,0 +1,36 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import NowPlaying from '../../components/NowPlaying.astro';
+import AvailableCard from '../../components/AvailableCard.astro';
+import StackCard from '../../components/StackCard.astro';
+import LangToggle from '../../components/LangToggle.astro';
+import ThemeToggle from '../../components/ThemeToggle.astro';
+import { projects } from '../../data/projects';
+
+const lang = 'es';
+const [rabbit, tupc, brium] = projects;
+---
+<Base lang={lang}>
+  <main class="page">
+    <div class="shell">
+      <header class="bar">
+        <div class="controls">
+          <LangToggle lang={lang} />
+          <ThemeToggle />
+        </div>
+      </header>
+      <section class="bento">
+        <Hero lang={lang} />
+        <ProjectCard project={rabbit} lang={lang} />
+        <NowPlaying lang={lang} />
+        <AvailableCard lang={lang} />
+        <ProjectCard project={tupc} lang={lang} />
+        <ProjectCard project={brium} lang={lang} />
+        <StackCard lang={lang} />
+      </section>
+    </div>
+  </main>
+</Base>
