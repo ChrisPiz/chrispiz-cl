@@ -21,6 +21,10 @@ export interface Dict {
   npIdle: string;
   /** now-playing "recently played" prefix */
   npRecently: string;
-  /** stack pill-label */
-  stackLabel: string;
+  /** location pill-label */
+  locLabel: string;
+  /** city line */
+  locCity: string;
+  /** remote-availability note */
+  locRemote: string;
 }

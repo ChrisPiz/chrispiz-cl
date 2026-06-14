@@ -11,5 +11,7 @@ export const es: Dict = {
   npLabel: 'Reproduciendo',
   npIdle: 'Nada sonando ahora mismo',
   npRecently: 'Reproducido recientemente',
-  stackLabel: 'Stack',
+  locLabel: 'Ubicación',
+  locCity: 'Santiago, Chile',
+  locRemote: 'Abierto a remoto',
 };

@@ -5,7 +5,7 @@ import Hero from '../../components/Hero.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import NowPlaying from '../../components/NowPlaying.astro';
 import AvailableCard from '../../components/AvailableCard.astro';
-import StackCard from '../../components/StackCard.astro';
+import LocationCard from '../../components/LocationCard.astro';
 import LangToggle from '../../components/LangToggle.astro';
 import ThemeToggle from '../../components/ThemeToggle.astro';
 import { projects } from '../../data/projects';
@@ -29,7 +29,7 @@ const [rabbit, tupc, brium] = projects;
         <AvailableCard lang={lang} />
         <ProjectCard project={tupc} lang={lang} />
         <ProjectCard project={brium} lang={lang} />
-        <StackCard lang={lang} />
+        <LocationCard lang={lang} />
       </section>
     </div>
   </main>

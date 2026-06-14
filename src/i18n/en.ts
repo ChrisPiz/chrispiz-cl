@@ -11,5 +11,7 @@ export const en: Dict = {
   npLabel: 'Now Playing',
   npIdle: 'Not playing right now',
   npRecently: 'Recently played',
-  stackLabel: 'Stack',
+  locLabel: 'Based in',
+  locCity: 'Santiago, Chile',
+  locRemote: 'Open to remote',
 };

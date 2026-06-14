@@ -1,0 +1,31 @@
+---
+import type { Lang } from '../i18n';
+import { getDict } from '../i18n';
+const { lang } = Astro.props as { lang: Lang };
+const t = getDict(lang);
+---
+<div class="card info stack loc">
+  <div class="pill-label">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
+    <span>{t.locLabel}</span>
+  </div>
+  <div class="loc-body">
+    <span class="loc-city">{t.locCity}</span>
+    <span class="loc-meta"><span id="loc-time">— GMT-3</span> · {t.locRemote}</span>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    function tick() {
+      try {
+        var s = new Intl.DateTimeFormat('en-GB', {
+          hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Santiago',
+        }).format(new Date());
+        var el = document.getElementById('loc-time');
+        if (el) el.textContent = s + ' GMT-3';
+      } catch (_) {}
+    }
+    tick();
+    setInterval(tick, 30000);
+  })();
+</script>
