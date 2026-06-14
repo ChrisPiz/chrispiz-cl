@@ -183,15 +183,19 @@ body {
 .loc .loc-city { display: block; font-size: clamp(18px, 1.4vw, 22px); font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
 .loc .loc-meta { display: block; font-size: 13px; color: var(--text-2); margin-top: 6px; }
 
-.loc .map { position: absolute; z-index: 0; top: 50%; right: clamp(14px, 3vw, 44px); height: 88%; width: auto; transform: translateY(-50%); pointer-events: none; }
-.loc .map .globe-edge { fill: var(--text); fill-opacity: .04; stroke: var(--text-3); stroke-width: 2; stroke-opacity: .5; }
-.loc .map .grid line, .loc .map .grid ellipse { stroke: var(--text-3); stroke-width: 1.2; stroke-opacity: .3; }
-.loc .map .pin { fill: var(--green); }
-.loc .map .ring { stroke: var(--green); stroke-width: 1.6; transform-origin: 48px 78px; animation: mappulse 2.6s ease-out infinite; }
+.loc .map { position: absolute; z-index: 0; top: 50%; right: clamp(8px, 2vw, 30px); height: 112%; aspect-ratio: 1 / 1; transform: translateY(-50%); pointer-events: none; }
+.loc .map svg { height: 100%; width: 100%; display: block; }
+.loc .map .chile-shape { fill: var(--text-3); fill-opacity: .32; }
+.loc .map .loc-pin { position: absolute; left: 50%; top: 47%; width: 9px; height: 9px; border-radius: 50%; background: var(--green); transform: translate(-50%, -50%); }
+.loc .map .loc-pin::after {
+  content: ""; position: absolute; inset: -5px; border-radius: 50%;
+  border: 1.5px solid var(--green); transform-origin: center;
+  animation: mappulse 2.6s ease-out infinite;
+}
 @keyframes mappulse {
-  0%   { opacity: .55; transform: scale(.35); }
-  70%  { opacity: 0;   transform: scale(1.4); }
-  100% { opacity: 0;   transform: scale(1.4); }
+  0%   { opacity: .55; transform: scale(.4); }
+  70%  { opacity: 0;   transform: scale(1.5); }
+  100% { opacity: 0;   transform: scale(1.5); }
 }
 
 .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; align-content: flex-start; }
