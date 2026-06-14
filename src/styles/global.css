@@ -104,7 +104,7 @@ body {
 /* intro tile */
 .intro { grid-area: intro; }
 .intro .avatar {
-  width: 60px; height: 60px; border-radius: 15px; overflow: hidden;
+  width: 84px; height: 84px; border-radius: 20px; overflow: hidden;
   background: #f4f4f4; flex: none; margin-bottom: clamp(12px, 1.6vh, 20px);
   border: 1px solid rgba(0,0,0,.08);
 }
